@@ -4,6 +4,7 @@
   "description": "reactjs sample application for github.com issues viewer page",
   "main": "index.js",
   "scripts": {
+    "start": "browserify . | uglifyjs -cm > js/bundle.min.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,14 @@
   },
   "homepage": "https://github.com/Prasanna-sr/reactjs-github-issues-viewer",
   "dependencies": {
+    "gulp": "^3.9.0",
     "react": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "reactify": "^1.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "gulp-uglify": "^1.5.1",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.6.1"
   }
 }
