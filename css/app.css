@@ -1,0 +1,22 @@
+ul, li {
+    list-style-type: none;
+    border: black solid 2px;
+    margin: 0;
+    padding: 0;
+}
+.heading {
+    display: inline-block;
+    vertical-align: top;
+    border: green solid 2px;
+}
+.heading .title {
+    display: block;
+}
+img {
+    background-color: red;
+    width: 40px;
+    height: 40px;
+}
+.summary {
+    display: block;
+}
