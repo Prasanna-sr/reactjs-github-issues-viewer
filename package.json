@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Prasanna-sr/reactjs-github-issues-viewer",
   "dependencies": {
+    "flux": "^2.1.1",
     "gulp": "^3.9.0",
+    "jquery": "^2.1.4",
     "react": "^0.14.5",
     "reactify": "^1.1.1"
   },
