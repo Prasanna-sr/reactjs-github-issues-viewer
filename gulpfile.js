@@ -4,10 +4,11 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var uglify = require('gulp-uglify');
+var webserver = require('gulp-webserver');
 
 gulp.task('browserify', function() {
     var b = browserify({
-        entries: ['./js/app.js'],
+        entries: ['./app/js/app.js'],
         transform: [reactify],
         cache: {}, packageCache: {}, fullPaths: true ,
         plugin:[watchify]
@@ -17,8 +18,15 @@ gulp.task('browserify', function() {
     })
     bundle();
     function bundle() {
-        b.bundle().pipe(fs.createWriteStream('js/bundle.js'));
+        b.bundle().pipe(fs.createWriteStream('app/js/bundle.js'));
     }
 });
+gulp.task('webserver', function() {
+  gulp.src('app')
+    .pipe(webserver({
+        port: 3000,
+        fallback: 'index.html'
+    }));
+});
 
-gulp.task('default', ['browserify']);
+gulp.task('default', ['webserver','browserify']);

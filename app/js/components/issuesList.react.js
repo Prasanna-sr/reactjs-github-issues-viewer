@@ -48,9 +48,7 @@ var IssuesList = React.createClass({
     componentDidMount: function() {
         var that = this;
         issuesListStore.getList(function(data) {
-            console.log('mount 1');
             if(that.isMounted()) {
-                console.log('mount');
                 that.setState({
                     issuesList: data
                 })
@@ -58,7 +56,6 @@ var IssuesList = React.createClass({
         });
     },
    render: function() {
-       console.log(this.state.issuesList);
       var list = this.state.issuesList.map(function(issue) {
          return (<Issues issues={issue}/>);
       });

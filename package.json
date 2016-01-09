@@ -4,7 +4,7 @@
   "description": "reactjs sample application for github.com issues viewer page",
   "main": "index.js",
   "scripts": {
-    "start": "browserify . | uglifyjs -cm > js/bundle.min.js",
+    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +20,8 @@
   "dependencies": {
     "flux": "^2.1.1",
     "gulp": "^3.9.0",
+    "gulp-webserver": "^0.9.1",
+    "http-server": "^0.8.5",
     "jquery": "^2.1.4",
     "react": "^0.14.5",
     "reactify": "^1.1.1"
