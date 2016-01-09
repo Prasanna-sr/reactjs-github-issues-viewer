@@ -7,13 +7,13 @@ var GithubIssuesActions = {
 function loadList() {
    AppDispatcher.handleAction({
       actionType: "LOAD_LIST"
-   })
+  });
 }
 
 function getDetails(data) {
    AppDispatcher.handleAction({
       actionType: "LOAD_DETAILS",
       data: data
-   })
+  });
 }
 module.exports = GithubIssuesActions;
