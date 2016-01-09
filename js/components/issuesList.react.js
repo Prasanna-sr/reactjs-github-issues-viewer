@@ -1,16 +1,13 @@
 var React = require('react');
 var issuesListStore = require('./../store/issuesListStore.js')();
-
 var Issues = React.createClass({
     getInitialState: function() {
         return {
-            summary: '',
-            label: ''
+            summary: ''
         };
     },
     componentDidMount: function() {
-        this.setState({summary : getSummary(this.props.issues.body),
-        label: getLabels(this.props.issues.labels)});
+        this.setState({summary : getSummary(this.props.issues.body)});
     },
 
    render: function() {
@@ -19,7 +16,10 @@ var Issues = React.createClass({
             <img src={this.props.issues.user.avatar_url}/>
             <div className="heading">
                <label className="name">{this.props.issues.user.login}
-                  <span className="label">label</span>
+                      {this.props.issues.labels.map(function(labelObj){
+                          var labelStyle = {"background-color": "#" + labelObj.color};
+                        return <span className="label" style={labelStyle}>{labelObj.name}</span>
+                      })}
                </label>
                <label className="title">{this.props.issues.title}
                   <span className="id">#{this.props.issues.id}</span>
