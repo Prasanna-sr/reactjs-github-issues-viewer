@@ -1,69 +1,36 @@
 var React = require('react');
 var issuesListStore = require('./../store/issuesListStore.js')();
-var Issues = React.createClass({
-    getInitialState: function() {
-        return {
-            summary: ''
-        };
-    },
-    componentDidMount: function() {
-        this.setState({summary : getSummary(this.props.issues.body)});
-    },
+var Pagination = require('./Pagination.react.js');
+var IssueItem = require('./IssueItem.react.js');
 
-   render: function() {
-      return (
-         <li>
-            <img src={this.props.issues.user.avatar_url}/>
-            <div className="heading">
-               <label className="name">{this.props.issues.user.login}
-                      {this.props.issues.labels.map(function(labelObj){
-                          var labelStyle = {"background-color": "#" + labelObj.color};
-                        return <span className="label" style={labelStyle}>{labelObj.name}</span>
-                      })}
-               </label>
-               <label className="title">{this.props.issues.title}
-                  <span className="id">#{this.props.issues.id}</span>
-               </label>
-            </div>
-            <label className="summary">{this.state.summary}</label>
-         </li>
-      );
-   }
-});
-
-function getSummary(str) {
-    var maxCharacters = 140;
-    var briefSummary = str.substring(0, maxCharacters);
-    while(briefSummary[maxCharacters] && briefSummary[maxCharacters] !== ' ') {
-        maxCharacters --;
-    }
-    return briefSummary.substring(0, maxCharacters);
-}
 var IssuesList = React.createClass({
     getInitialState: function() {
         return {
-            issuesList: []
+            issuesList: [],
+            paging: {}
         };
     },
-    componentDidMount: function() {
+    componentWillMount: function() {
         var that = this;
         issuesListStore.getList(function(data) {
             if(that.isMounted()) {
                 that.setState({
-                    issuesList: data
-                })
+                    issuesList: data,
+                    paging: data.paging
+                });
             }
         });
     },
    render: function() {
       var list = this.state.issuesList.map(function(issue) {
-         return (<Issues issues={issue}/>);
+         return (<IssueItem issues={issue} key={issue.id}/>);
       });
       return (
-          <div>
+          <div className="issuesList">
               <ul>
                   {list}
               </ul>
+              <Pagination paging={this.state.paging}/>
           </div>
       )
    }
