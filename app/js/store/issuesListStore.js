@@ -45,8 +45,12 @@ function IssuesListStore() {
       });
    }
 
-   function getList(callback) {
-       $.get('https://api.github.com/repos/npm/npm/issues').done(function(data, status, jxhr) {
+   function getList(page, callback) {
+       var url = 'https://api.github.com/repos/npm/npm/issues';
+       if(page) {
+           url = url + '?page=' + page;
+       }
+       $.get(url).done(function(data, status, jxhr) {
            var link = jxhr.getResponseHeader('Link');
            var links = link.split(',');
            var paging = {};

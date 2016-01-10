@@ -71,9 +71,10 @@ var IssuesList = React.createClass({displayName: "IssuesList",
             paging: {}
         };
     },
-    componentWillMount: function() {
+    componentDidMount: function() {
         var that = this;
-        issuesListStore.getList(function(data) {
+        var page = urlParam("page");
+        issuesListStore.getList(page, function(data) {
             if(that.isMounted()) {
                 that.setState({
                     issuesList: data,
@@ -96,6 +97,11 @@ var IssuesList = React.createClass({displayName: "IssuesList",
       )
    }
 });
+
+function urlParam(name){
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	return results ?results[1] : null;
+}
 
 module.exports = IssuesList;
 
@@ -187,8 +193,12 @@ function IssuesListStore() {
       });
    }
 
-   function getList(callback) {
-       $.get('https://api.github.com/repos/npm/npm/issues').done(function(data, status, jxhr) {
+   function getList(page, callback) {
+       var url = 'https://api.github.com/repos/npm/npm/issues';
+       if(page) {
+           url = url + '?page=' + page;
+       }
+       $.get(url).done(function(data, status, jxhr) {
            var link = jxhr.getResponseHeader('Link');
            var links = link.split(',');
            var paging = {};
