@@ -1,0 +1,49 @@
+.issuesList {
+    margin: 5% 15% 5% 15%;
+}
+ul {
+    border: grey solid 1px;
+}
+ul, li {
+    list-style-type: none;
+    border-bottom: grey solid 1px;
+    margin: 0;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.heading {
+    display: inline-block;
+    vertical-align: top;
+}
+.heading .name {
+    font-weight: bold;
+}
+.heading .title {
+    display: block;
+    font-weight: bold;
+}
+.heading .title .id {
+    padding-left: 10px;
+    display: inline-block;
+    font-weight: normal;
+    font-style: italic;
+}
+.heading .label {
+    padding: 0 5px 0 5px;
+    margin: 0 3px 0 3px;
+}
+img {
+    width: 40px;
+    height: 40px;
+    padding-right: 5px;
+}
+.summary {
+    display: block;
+}
+
+.pagination {
+    margin:auto;
+}
+.pagination a {
+    margin: 0px 10px 0px 10px;
+}
