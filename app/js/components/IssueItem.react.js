@@ -17,7 +17,7 @@ var IssueItem = React.createClass({
                </label>
                <div className="title">
                    <Link to={issuesHref}>{this.props.issues.title}</Link>
-                  <span className="id">#{this.props.issues.id}</span>
+                  <span className="id">#{this.props.issues.number}</span>
                </div>
             </div>
             <label className="summary">{summary}</label>
