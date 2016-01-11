@@ -24,6 +24,7 @@
 }
 .issuesDetails .body {
     display: inline-block;
+    font-weight: normal;
 }
 .issuesDetails .name {
     vertical-align: top;

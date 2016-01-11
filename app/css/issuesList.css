@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 
 .issuesList {
     margin: 5% 15% 5% 15%;
@@ -13,13 +16,24 @@
     margin-bottom: 10px;
 }
 .heading {
+    width: 100%;
     display: inline-block;
     vertical-align: top;
 }
-
+.issuesList .heading .commentIcon {
+    float: right;
+    font-size: 0.80em;
+}
+.issuesList .heading .commentIcon span {
+    padding: 2px;
+    vertical-align: 2px;
+}
 .heading .title {
     display: block;
     font-weight: bold;
+}
+.heading .name {
+    font-weight: normal;
 }
 .heading .title .id {
     padding-left: 10px;
@@ -38,6 +52,7 @@
 }
 .issuesList .summary {
     display: block;
+    font-weight: normal;
 }
 
 .issuesList .title a {
