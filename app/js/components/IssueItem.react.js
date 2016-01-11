@@ -1,8 +1,10 @@
 var React = require('react');
+var Link = require('react-router').Link;
 
 var IssueItem = React.createClass({
    render: function() {
        var summary = getSummary(this.props.issues.body);
+       var issuesHref = "/issues/" + this.props.issues.number;
       return (
          <li>
             <img src={this.props.issues.user.avatar_url}/>
@@ -13,9 +15,10 @@ var IssueItem = React.createClass({
                         return <span key={labelObj.name} className="label" style={labelStyle}>{labelObj.name}</span>
                       })}
                </label>
-               <label className="title">{this.props.issues.title}
+               <div className="title">
+                   <Link to={issuesHref}>{this.props.issues.title}</Link>
                   <span className="id">#{this.props.issues.id}</span>
-               </label>
+               </div>
             </div>
             <label className="summary">{summary}</label>
          </li>

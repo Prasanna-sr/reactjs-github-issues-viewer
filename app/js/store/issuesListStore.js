@@ -46,9 +46,9 @@ function IssuesListStore() {
    }
 
    function getList(page, callback) {
-       var url = 'https://api.github.com/repos/npm/npm/issues';
+       var url = 'https://api.github.com/repos/npm/npm/issues?per_page=25';
        if(page) {
-           url = url + '?page=' + page;
+           url = url + '&page=' + page;
        }
        $.get(url).done(function(data, status, jxhr) {
            var link = jxhr.getResponseHeader('Link');

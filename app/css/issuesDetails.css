@@ -1,0 +1,35 @@
+.issuesDetails {
+    margin: 5% 15% 5% 15%;
+}
+
+.issuesDetails h3 {
+    font-size: 2em;
+    font-style: bold;
+    margin: 5px;
+}
+
+.issuesDetails .state {
+    font-size: 2rem;
+    padding: 5px;
+}
+
+.issuesDetails .label {
+    padding: 0 5px 0 5px;
+    margin: 0 3px 0 3px;
+}
+.issuesDetails .body {
+    display: inline-block;
+}
+.issuesDetails .name {
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.issuesDetails .header {
+    margin-top: 10px;
+    background-color: rgba(55, 51, 51, 0.18);
+}
+.issuesDetails .body {
+    padding: 5px;
+    border: solid grey 1px;
+}

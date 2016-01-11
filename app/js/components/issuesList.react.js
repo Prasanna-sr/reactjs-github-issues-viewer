@@ -1,5 +1,5 @@
 var React = require('react');
-var issuesListStore = require('./../store/issuesListStore.js')();
+var issuesListStore = require('./../store/IssuesListStore.js')();
 var Pagination = require('./Pagination.react.js');
 var IssueItem = require('./IssueItem.react.js');
 
