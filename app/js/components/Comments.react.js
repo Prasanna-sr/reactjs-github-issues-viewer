@@ -33,6 +33,7 @@ var Comments = React.createClass({
                   <div className="header">
                      <img src={comment.user.avatar_url}/>
                      <label className="name">{comment.user.login}</label>
+                     <span>commented</span>
                   </div>
                   <div className="comment" dangerouslySetInnerHTML={createMarkupWithLinks()}/>
 

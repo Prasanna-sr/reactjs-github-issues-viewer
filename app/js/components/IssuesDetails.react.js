@@ -34,6 +34,7 @@ var IssuesDetails = React.createClass({
                 <div className="header">
                    <img src={issuesDetails.user.avatar_url} />
                    <label className="name">{issuesDetails.user.login}</label>
+                   <span>posted</span>
                 </div>
                   <label className="body">{issuesDetails.body}</label>
                   {commentsList}

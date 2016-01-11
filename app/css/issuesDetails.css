@@ -29,6 +29,14 @@
     vertical-align: top;
     font-weight: bold;
 }
+.issuesDetails .header label {
+    padding-right: 5px;
+}
+
+
+.issuesDetails .header span {
+    vertical-align: top;
+}
 
 .issuesDetails .header {
     margin-top: 10px;
