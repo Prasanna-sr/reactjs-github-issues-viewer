@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 function CommentsStore() {
    var commentsStoreObj = {
       getList: getList
@@ -5,8 +7,12 @@ function CommentsStore() {
    return commentsStoreObj;
 
    function getList(commentsUrl, callback) {
-      $.get(commentsUrl).done(function(data) {
-         callback(data);
+      $.ajax({
+         type: 'GET',
+         url: commentsUrl,
+         success: function(data) {
+            callback(data);
+         }
       });
    }
 }
