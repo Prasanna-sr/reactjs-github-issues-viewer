@@ -1,19 +1,19 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 
-function IssuesDetailsStore() {
+function CommentsStore() {
    var list;
-   var issuesDetailsStoreObj = {
-      getDetails: getDetails,
+   var commentsStoreObj = {
+      getList: getList,
       emitChange: emitChange,
       addChangeListener: addChangeListener,
       removeChangeListener: removeChangeListener
   };
 
-   issuesDetailsStoreObj.prototype = Object.create(EventEmitter.prototype);
+   commentsStoreObj.prototype = Object.create(EventEmitter.prototype);
    registerAppDispatcher();
 
-   return issuesDetailsStoreObj;
+   return commentsStoreObj;
 
    function registerAppDispatcher() {
       AppDispatcher.register(function(payload) {
@@ -40,9 +40,8 @@ function IssuesDetailsStore() {
    function loadData(callback) {
    }
 
-   function getDetails(issueNo, callback) {
-       var url = 'https://api.github.com/repos/npm/npm/issues/' + issueNo;
-       $.get(url).done(function(data) {
+   function getList(commentsUrl, callback) {
+       $.get(commentsUrl).done(function(data) {
           callback(data);
        });
    }
@@ -59,4 +58,4 @@ function IssuesDetailsStore() {
       this.removeListener('change', callback);
    }
 }
-module.exports = IssuesDetailsStore;
+module.exports = CommentsStore;

@@ -1,5 +1,6 @@
 var React = require('react');
 var IssuesDetailsStore = require('./../store/IssuesDetailsStore.js')();
+var Comments = require('./Comments.react');
 var IssuesDetails = React.createClass({
    getInitialState: function() {
       return {issuesDetails: undefined};
@@ -15,7 +16,13 @@ var IssuesDetails = React.createClass({
    },
    render: function() {
       var issuesDetails = this.state.issuesDetails;
+      var commentsList;
       if(issuesDetails) {
+          if(issuesDetails.comments) {
+              commentsList = <Comments commentsUrl={issuesDetails.comments_url}/>;
+          } else {
+              commentsList = '';
+          }
           return (
              <div className="issuesDetails">
                    <h3>{issuesDetails.title}</h3>
@@ -29,7 +36,9 @@ var IssuesDetails = React.createClass({
                    <label className="name">{issuesDetails.user.login}</label>
                 </div>
                   <label className="body">{issuesDetails.body}</label>
+                  {commentsList}
              </div>
+
           )
       } else {
           return (<div></div>)
