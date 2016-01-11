@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var appConstant = require('./../constants/appConstants');
 
 function IssuesDetailsStore() {
    var issuesDetailsStoreObj = {
@@ -7,7 +8,7 @@ function IssuesDetailsStore() {
    return issuesDetailsStoreObj;
 
    function getDetails(issueNo, callback) {
-      var url = 'https://api.github.com/repos/npm/npm/issues/' + issueNo;
+      var url = appConstant.ISSUES_DETAILS_URL + issueNo;
       $.ajax({
          type: 'GET',
          url: url,
