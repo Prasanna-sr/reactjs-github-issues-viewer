@@ -4,9 +4,14 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var uglify = require('gulp-uglify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var webserver = require('gulp-webserver');
+var transform = require('vinyl-transform');
+var jshint = require('gulp-jshint');
 
-gulp.task('browserify', function() {
+var bundlePath = 'app/js/bundle.js';
+gulp.task('browserifyAndWatchify', function() {
     var b = browserify({
         entries: ['./app/js/app.js'],
         transform: [reactify],
@@ -18,9 +23,29 @@ gulp.task('browserify', function() {
     })
     bundle();
     function bundle() {
-        b.bundle().pipe(fs.createWriteStream('app/js/bundle.js'));
+        b.bundle().pipe(fs.createWriteStream(bundlePath));
     }
 });
+
+gulp.task('browserifyAndUgilify', function() {
+    var b = browserify({
+        entries: ['./app/js/app.js'],
+        transform: [reactify],
+        cache: {}, packageCache: {}, fullPaths: true
+    });
+    b.bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest('app/js/'));
+});
+
+gulp.task('lint', function() {
+  return gulp.src('./app/js/store/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
 gulp.task('webserver', function() {
   gulp.src('app')
     .pipe(webserver({
@@ -29,4 +54,5 @@ gulp.task('webserver', function() {
     }));
 });
 
-gulp.task('default', ['webserver','browserify']);
+gulp.task('run-prod', ['browserifyAndUgilify','webserver']);
+gulp.task('run-dev', ['lint', 'browserifyAndWatchify','webserver']);

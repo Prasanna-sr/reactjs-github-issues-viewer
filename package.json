@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp run-prod",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,20 +19,27 @@
   },
   "homepage": "https://github.com/Prasanna-sr/reactjs-github-issues-viewer",
   "dependencies": {
-    "browserify": "^12.0.1",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
     "gulp": "^3.9.0",
     "gulp-webserver": "^0.9.1",
     "history": "^1.17.0",
     "http-server": "^0.8.5",
     "jquery": "^2.1.4",
-    "react": "^0.14.5",
+    "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "react-router": "^1.0.3",
-    "reactify": "^1.1.1"
+    "react-router": "^1.0.3"
   },
   "devDependencies": {
+    "browserify": "^12.0.1",
+    "gulp-jshint": "^2.0.0",
     "gulp-uglify": "^1.5.1",
-    "uglifyjs": "^2.4.10",
-    "watchify": "^3.6.1"
+    "jest-cli": "^0.8.2",
+    "jshint": "^2.8.0",
+    "reactify": "^1.1.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0",
+    "watchify": "^3.7.0"
   }
 }
